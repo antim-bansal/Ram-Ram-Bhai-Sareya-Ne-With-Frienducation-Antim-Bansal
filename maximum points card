@@ -1,0 +1,29 @@
+//variables --> int score , vector<int> prefix , int ans , int s , int sum
+
+//code--->
+class Solution {
+public:
+    int maxScore(vector<int>& cardpoints, int k) {
+       int score=0;
+       for(int i=0;i<cardpoints.size();i++){
+           score+=cardpoints[i];
+       }
+       vector<int> prefix;int sum=0;
+       for(int i=0;i<cardpoints.size();i++){
+           sum+=cardpoints[i];
+            prefix.push_back(sum);
+       } 
+       int ans=0;
+       if(prefix.size()==k){
+           return score;
+       }else{
+       int s = prefix[prefix.size()-k-1];
+       for(int i=0;i<k;i++){
+           ans = max(ans,score-s);
+           s = prefix[prefix.size()-k+i]-prefix[i];
+       }
+       ans = max(ans,score-s);
+       return ans;
+    }
+    }
+};

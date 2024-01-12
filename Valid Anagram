@@ -1,0 +1,23 @@
+//variable --> bool b , string s1 , string s2;
+
+//code --> 
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        bool b = true;
+        vector<char> v1(s.begin() , s.end());
+        vector<char> v2(t.begin() , t.end());
+
+        sort(v1.begin() , v1.end());
+        sort(v2.begin() , v2.end());
+
+        string s1(v1.begin(),v1.end());
+        string s2(v2.begin(),v2.end());
+
+        if(s1==s2){
+            return true;
+        }
+            return false;
+    }
+};
